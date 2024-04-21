@@ -1,0 +1,20 @@
+Unpowered Flight()
+In this step, Sdcard.LogData and tele.SendTelemetry must be executed. Also, it must be calculated whether the maximum altitude MaxAlt > current height ALT. This should be done via the barometer functions.
+
+Descent()
+Here, the Data log function should continue to be executed as well as the tele.Send Telemetry function. Also, a calculation must be made whether the current height falls below a THRESHOLD. If the THRESHOLD is undercut, then the Parachute Servo should be given the value for Parachute Eject.
+
+
+
+
+There, the individual flight phases will be initialized. And the following checkups will be carried out to switch the states.
+
+To switch from PadIdle to Powered Flight, a Liftup Check will be implemented.
+This checks whether the acceleration in Z, accZ, is greater than -2. If that is the case, Powered Flight is activated.
+
+To switch from Powered Flight to Unpowered Flight,
+it is checked whether the acceleration becomes negative again. Since the fuel has been consumed, and we are no longer actively accelerating.
+
+To switch from Unpowered Flight to Descent, it is checked whether the current altitude ALT is less than the Maximum Altitude MaxALT.
+
+To switch from Descent to Landed, we need to check if the altitude ALT is below a certain threshold, for example, 12 meters.
